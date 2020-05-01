@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PatientTracker 2020 Covid Edition</string>
+    <string name="opis_aplikacije">Informacioni sistem za\n pracnje stanja\n pacijenata obolelih od \n Covid-19</string>
+    <string name="prijava_btn">Prijava</string>
+    <string name="uneti_pin">Uneti pin</string>
+    <string name="ime_bolnice">Ime bolnice</string>
+    <string name="prezime">Prezime</string>
+    <string name="ime">Ime</string>
+</resources>
