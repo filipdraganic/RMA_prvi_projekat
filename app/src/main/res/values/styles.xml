@@ -12,4 +12,9 @@
         <item name="android:windowBackground" >@drawable/splash_background</item>
     </style>
 
+
+    <style name="tabLayoutTheme" parent="Widget.MaterialComponents.TabLayout" >
+        <item name="android:textColor">@color/red</item>
+    </style>
+
 </resources>

@@ -3,6 +3,8 @@ package com.rs.raf.projekat1.Filip_Draganic_RN542017.views.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.viewpager.BottomPagerAdapter
 import com.rsrafprojekat1.Filip_Draganic_RN542017.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,31 +14,39 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initListeners()
+        init()
+    }
+
+
+    private fun init(){
+        noscrollBottomNavigation.adapter = BottomPagerAdapter(supportFragmentManager)
+
+
+
     }
 
     private fun initListeners(){
-        val sharedpreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
-        val ime = sharedpreferences.getString("ime","failed")
-        val prezime = sharedpreferences.getString("prezime", "failed")
-        val bolnica = sharedpreferences.getString("bolnica", "failed")
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.navigation_liste -> {
+                    noscrollBottomNavigation.setCurrentItem(BottomPagerAdapter.LISTE,false)
+                }
 
+                R.id.navigation_stanje -> {
+                    noscrollBottomNavigation.setCurrentItem(BottomPagerAdapter.STANJE,false)
+                }
 
+                R.id.navigation_unos -> {
+                    noscrollBottomNavigation.setCurrentItem(BottomPagerAdapter.UNOS,false)
+                }
 
-        imeTV.text = ime
-        prezimeTV.text = prezime
-        bolnicaTV.text = bolnica
-
-        logoutBtn.setOnClickListener{
-            val sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-
-            editor.putBoolean("loggedin", false)
-
-            editor.apply()
+                R.id.navigation_profil -> {
+                    noscrollBottomNavigation.setCurrentItem(BottomPagerAdapter.PROFIL,false)
+                }
+            }
+            return@setOnNavigationItemSelectedListener true
         }
-
-
-
-
     }
+
+
 }
