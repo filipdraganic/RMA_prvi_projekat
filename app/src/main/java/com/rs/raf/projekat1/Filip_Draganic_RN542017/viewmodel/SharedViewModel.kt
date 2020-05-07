@@ -22,6 +22,7 @@ class SharedViewModel : ViewModel(){
     private val hospitalizovaniData : MutableLiveData<List<Pacijent>> = MutableLiveData()
     private val otpusteniData : MutableLiveData<List<Pacijent>> = MutableLiveData()
 
+    private val toShowData : MutableLiveData<List<Pacijent>> = MutableLiveData()
 
     fun getCekaonicaData() : MutableLiveData<List<Pacijent>> {
         return cekaonicaData
@@ -82,8 +83,28 @@ class SharedViewModel : ViewModel(){
 
             }
         }
+    }
 
+    fun pretraziPacijenta(lista: Int, string: String): MutableLiveData<List<Pacijent>> {
 
+        val tempLista : MutableList<Pacijent> = mutableListOf()
+
+        when(lista){
+            CEKAONICA -> {
+                if (string == "") return cekaonicaData
+                cekaonicaLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+            }
+            HOSPITALIZOVAN -> {
+                if (string == "") return hospitalizovaniData
+                hospitalizovaniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+            }
+            else -> {
+                if (string == "") return otpusteniData
+                otpusteniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+            }
+        }
+        toShowData.value = tempLista
+        return toShowData
 
     }
 
