@@ -13,7 +13,7 @@ data class Pacijent(
     val datumPrijema: Date,
     val hospitalizovan: Boolean,
     val uCekaonici: Boolean,
-    val stanje:String,
+    val stanje: Int,
     val simptomi: String,
     val datumHospitalizacije:Date?,
     val datumOtpustanja:Date?

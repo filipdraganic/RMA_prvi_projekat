@@ -3,6 +3,7 @@ package com.rs.raf.projekat1.Filip_Draganic_RN542017.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.model.Pacijent
+import timber.log.Timber
 
 class SharedViewModel : ViewModel(){
 
@@ -32,7 +33,7 @@ class SharedViewModel : ViewModel(){
         return otpusteniData
     }
 
-    fun dodajPacijenta(pacijent: Pacijent, stanje : Int){
+    fun dodajPacijenta(pacijent: Pacijent, stanje: Int){
 
         when(stanje){
             CEKAONICA -> {
@@ -48,6 +49,40 @@ class SharedViewModel : ViewModel(){
                 otpusteniData.value = otpusteniLista
             }
         }
+
+
+    }
+
+
+
+    fun premestiPacijenta(pacijent: Pacijent, stanje: Int, uStanje: Int){
+
+        when(stanje){
+            CEKAONICA->{
+                when(uStanje){
+                    HOSPITALIZOVAN -> {
+                        cekaonicaLista.remove(pacijent)
+                        hospitalizovaniLista.add(pacijent)
+                    }
+                    OTPUSTEN ->{
+                        cekaonicaLista.remove(pacijent)
+                        otpusteniLista.add(pacijent)
+                    }
+                    else -> {
+                        Timber.e("Greska u Shared View Model 1")
+                    }
+                }
+            }
+            HOSPITALIZOVAN -> {
+                hospitalizovaniLista.remove(pacijent)
+                otpusteniLista.remove(pacijent)
+            }
+            else -> {
+                Timber.e("Greska u Shared View Model 2")
+
+            }
+        }
+
 
 
     }

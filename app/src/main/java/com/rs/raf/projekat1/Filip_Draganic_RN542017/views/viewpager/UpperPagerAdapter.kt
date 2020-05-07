@@ -30,9 +30,9 @@ class UpperPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
-            CEKAONICA -> "CEKAONICA"
-            HOSPITALIZOVANI -> "HOSPITALIZOVANI"
-            else -> "OTPUSTENI"
+            CEKAONICA -> "Cekaonica"
+            HOSPITALIZOVANI -> "Hospitalizovani"
+            else -> "Otpusteni"
         }
     }
 }
