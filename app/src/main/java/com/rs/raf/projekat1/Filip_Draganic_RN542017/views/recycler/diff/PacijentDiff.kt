@@ -11,13 +11,9 @@ class PacijentDiff : DiffUtil.ItemCallback<Pacijent>(){
     override fun areContentsTheSame(oldItem: Pacijent, newItem: Pacijent): Boolean {
         return oldItem.ime == newItem.ime &&
                 oldItem.prezime == newItem.prezime &&
-                oldItem.hospitalizovan == newItem.hospitalizovan &&
-                oldItem.uCekaonici == newItem.uCekaonici &&
                 oldItem.datumHospitalizacije == newItem.datumHospitalizacije &&
                 oldItem.datumOtpustanja == newItem.datumOtpustanja &&
                 oldItem.datumPrijema == newItem.datumPrijema &&
-                oldItem.slika == newItem.slika &&
-                oldItem.stanje == newItem.stanje &&
                 oldItem.simptomi == newItem.simptomi
     }
 

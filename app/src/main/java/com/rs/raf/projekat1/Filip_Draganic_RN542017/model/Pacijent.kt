@@ -7,14 +7,11 @@ import java.util.*
 @Parcelize
 data class Pacijent(
     val id:UUID,
-    val slika: String,
     val ime: String,
     val prezime: String,
     val datumPrijema: Date,
-    val hospitalizovan: Boolean,
-    val uCekaonici: Boolean,
-    val stanje: Int,
     val simptomi: String,
+    val originalniSimptomi: String,
     val datumHospitalizacije:Date?,
     val datumOtpustanja:Date?
 

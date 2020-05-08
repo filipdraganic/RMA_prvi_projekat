@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.model.Pacijent
 import timber.log.Timber
+import java.util.*
 
 class SharedViewModel : ViewModel(){
 
@@ -24,6 +25,7 @@ class SharedViewModel : ViewModel(){
 
     private val toShowData : MutableLiveData<List<Pacijent>> = MutableLiveData()
 
+
     fun getCekaonicaData() : MutableLiveData<List<Pacijent>> {
         return cekaonicaData
     }
@@ -34,8 +36,40 @@ class SharedViewModel : ViewModel(){
         return otpusteniData
     }
 
-    fun dodajPacijenta(pacijent: Pacijent, stanje: Int){
 
+    fun testPacijenti(){
+        val imena = listOf<String>("Finn", "Colton", "Macey", "Ori", "Slade", "Noelle", "Erich")
+        val prezimena = listOf<String>("Martinez", "Curtis", "Ruiz", "Calderon","Rollins", "Cameron", "Espinoza", "Dyer")
+        val simptomi = listOf<String>("Abdominal Pain of Absolutely No Significance -  as in why come to the ER type of pain. ",
+            "Acute Exacerbation of Chronic Nonsense -  self explanatory. ",
+            "Arrestogenic Shock -  sudden life threatening illness caused by getting arrested.",
+            "Biscuit Poisoning -  what morbidly obese patients have.",
+            "Chandelier Sign - jumping off the bed to belly palpation,  seen with extreme pain.",
+            "Crapacardia -  a bad EKG that needs to be repeated",
+            "Cyberchondria -  worrying about all the worst possibilities after reading the internet. ",
+            "Dead Shovel -  a patient who has a heart attack shoveling snow.",
+            "Dizziness of No Possible Cause:  a top 10 ER diagnosis. ",
+            "GonoherpasyphilAIDS - has all the STDs from sleeping with the entire football team.",
+            "I sign -  as in the sound of pain in Spanish (e.g. aye...aye...AYE...aye).",
+            "Insurance Pain -  pain that presents when insurance settlements are involved. ",
+            "Polybabydaddia -  a woman who comes to the ER with multiple kids from different daddies.",
+            "Ridiculitis - because every symptom needs respect. ")
+        val bool = listOf<Boolean>(true, false)
+
+        val rnds = (0..2).random()
+        val simptom = simptomi[(0 until simptomi.size).random()]
+
+        val bulvrednost = bool[(0..1).random()]
+        dodajPacijenta(Pacijent(UUID.randomUUID(),imena[(0 until imena.size).random()],
+            prezimena[(0 until prezimena.size).random()], Date() , simptom, simptom,
+            null, null ) ,0)
+
+
+    }
+
+
+    fun dodajPacijenta(pacijent: Pacijent, stanje: Int){
+        Timber.e("%s ,stanje = %s", pacijent.toString(), stanje)
         when(stanje){
             CEKAONICA -> {
                 cekaonicaLista.add(pacijent)
@@ -76,7 +110,7 @@ class SharedViewModel : ViewModel(){
             }
             HOSPITALIZOVAN -> {
                 hospitalizovaniLista.remove(pacijent)
-                otpusteniLista.remove(pacijent)
+                otpusteniLista.add(pacijent)
             }
             else -> {
                 Timber.e("Greska u Shared View Model 2")

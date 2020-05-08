@@ -27,6 +27,11 @@ class UnosFragment : Fragment(R.layout.fragment_unos){
 
     private fun initListeners(){
 
+        testDugme.setOnClickListener {
+            sharedViewModel.testPacijenti()
+        }
+
+
         dodajBtn.setOnClickListener{
 
             if (imeET.text.toString().length < 3) {
@@ -43,9 +48,8 @@ class UnosFragment : Fragment(R.layout.fragment_unos){
 
                 sharedViewModel.dodajPacijenta(
                     Pacijent(
-                        UUID.randomUUID(), "",
-                        imeET.text.toString(), prezimeET.text.toString(), Date(), false,
-                        true, 0, simptomiET.text.toString(), null, null
+                        UUID.randomUUID(),
+                        imeET.text.toString(), prezimeET.text.toString(), Date(), simptomiET.text.toString(), simptomiET.text.toString(), null, null
                     ), 0
                 )
 

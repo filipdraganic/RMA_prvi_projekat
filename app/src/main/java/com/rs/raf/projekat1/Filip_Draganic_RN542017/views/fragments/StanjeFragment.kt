@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_stanje.*
 
 class StanjeFragment : Fragment(R.layout.fragment_stanje){
 
-    private val sharerdViewModel : SharedViewModel by activityViewModels()
+    private val sharedViewModel : SharedViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -21,23 +21,26 @@ class StanjeFragment : Fragment(R.layout.fragment_stanje){
 
     private fun init(){
         initObservers()
+        initListeners()
     }
 
     private fun initObservers(){
 
-        sharerdViewModel.getCekaonicaData().observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getCekaonicaData().observe(viewLifecycleOwner, Observer {
             cekaonicaBroj.text = it.size.toString()
         })
 
-        sharerdViewModel.getHospitalizovaniData().observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getHospitalizovaniData().observe(viewLifecycleOwner, Observer {
             hospitalizovaniBroj.text = it.size.toString()
         })
 
 
-        sharerdViewModel.getOtpusteniData().observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getOtpusteniData().observe(viewLifecycleOwner, Observer {
             otpusteniBroj.text = it.size.toString()
         })
+    }
 
+    private fun initListeners(){
 
     }
 }

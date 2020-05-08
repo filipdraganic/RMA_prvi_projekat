@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.activityViewModels
+import com.rs.raf.projekat1.Filip_Draganic_RN542017.viewmodel.SharedViewModel
 import com.rsrafprojekat1.Filip_Draganic_RN542017.R
 
 class SplashActivity : AppCompatActivity() {

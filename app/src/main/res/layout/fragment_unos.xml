@@ -58,6 +58,22 @@
         android:layout_height="match_parent"
 
         >
+
+        <Button
+            android:id="@+id/testDugme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toTopOf="@id/dodajBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Test"
+
+
+            />
+
+
+
         <Button
             android:id="@+id/dodajBtn"
             android:layout_width="180dp"
