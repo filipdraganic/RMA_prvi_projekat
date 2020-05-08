@@ -125,24 +125,33 @@ class SharedViewModel : ViewModel(){
     }
 
     fun pretraziPacijenta(lista: Int, string: String){
+        /*
+        Ideja je da kada se pretrazuje da se notifikuje data change svaki put u klasi odakle se poziva
+        ova funkcija, a da se ovde data menja sa onim sto se isfiltrira
 
+        Samo nisam siguran sta ce biti kada se searchuje nesto i ode na drugi fragment
+         */
         val tempLista : MutableList<Pacijent> = mutableListOf()
 
         when(lista){
             CEKAONICA -> {
-                if (string == "")
+                if (string == "") {
+                    cekaonicaData.value = cekaonicaLista
+                }
                 cekaonicaLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+                cekaonicaData.value = tempLista
             }
             HOSPITALIZOVAN -> {
-                if (string == "")
+                if (string == "") hospitalizovaniData.value = hospitalizovaniLista
                 hospitalizovaniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+                hospitalizovaniData.value = tempLista
             }
             else -> {
-                if (string == "")
+                if (string == "") otpusteniData.value = otpusteniLista
                 otpusteniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+                otpusteniData.value = tempLista
             }
         }
-        toShowData.value = tempLista
 
     }
 

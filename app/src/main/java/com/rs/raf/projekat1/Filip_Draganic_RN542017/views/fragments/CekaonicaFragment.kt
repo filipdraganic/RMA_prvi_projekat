@@ -33,6 +33,7 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica){
     private fun initListeners(){
         searchET.doAfterTextChanged {
             sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
+            cekaonicaAdapter.notifyDataSetChanged()
         }
     }
 
