@@ -98,10 +98,14 @@ class SharedViewModel : ViewModel(){
                     HOSPITALIZOVAN -> {
                         cekaonicaLista.remove(pacijent)
                         hospitalizovaniLista.add(pacijent)
+                        cekaonicaData.value = cekaonicaLista
+                        hospitalizovaniData.value = hospitalizovaniLista
                     }
                     OTPUSTEN ->{
                         cekaonicaLista.remove(pacijent)
                         otpusteniLista.add(pacijent)
+                        cekaonicaData.value = cekaonicaLista
+                        otpusteniData.value = otpusteniLista
                     }
                     else -> {
                         Timber.e("Greska u Shared View Model 1")
@@ -111,6 +115,7 @@ class SharedViewModel : ViewModel(){
             HOSPITALIZOVAN -> {
                 hospitalizovaniLista.remove(pacijent)
                 otpusteniLista.add(pacijent)
+                otpusteniData.value = otpusteniLista
             }
             else -> {
                 Timber.e("Greska u Shared View Model 2")
@@ -119,26 +124,25 @@ class SharedViewModel : ViewModel(){
         }
     }
 
-    fun pretraziPacijenta(lista: Int, string: String): MutableLiveData<List<Pacijent>> {
+    fun pretraziPacijenta(lista: Int, string: String){
 
         val tempLista : MutableList<Pacijent> = mutableListOf()
 
         when(lista){
             CEKAONICA -> {
-                if (string == "") return cekaonicaData
+                if (string == "")
                 cekaonicaLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
             }
             HOSPITALIZOVAN -> {
-                if (string == "") return hospitalizovaniData
+                if (string == "")
                 hospitalizovaniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
             }
             else -> {
-                if (string == "") return otpusteniData
+                if (string == "")
                 otpusteniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
             }
         }
         toShowData.value = tempLista
-        return toShowData
 
     }
 

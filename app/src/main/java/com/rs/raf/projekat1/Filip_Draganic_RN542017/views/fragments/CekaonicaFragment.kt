@@ -40,11 +40,13 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica){
     private val zdravoDugme: (Pacijent) -> Unit = {
         sharedViewModel.premestiPacijenta(it, SharedViewModel.CEKAONICA, SharedViewModel.OTPUSTEN)
         sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
+        cekaonicaAdapter.notifyDataSetChanged()
     }
 
     private val hospitalizacijaDugme: (Pacijent) -> Unit = {
         sharedViewModel.premestiPacijenta(it, SharedViewModel.CEKAONICA, SharedViewModel.HOSPITALIZOVAN)
         sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
+        cekaonicaAdapter.notifyDataSetChanged()
     }
 
     private fun initRecycler(){

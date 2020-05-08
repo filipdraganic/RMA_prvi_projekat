@@ -16,10 +16,10 @@ class CekaonicaViewHolder(override val containerView: View, onZdravClicked: (Int
             if(adapterPosition != RecyclerView.NO_POSITION)
                 onZdravClicked.invoke(adapterPosition)
         }
-        hospitalizacijaBtn.setOnClickListener({
+        hospitalizacijaBtn.setOnClickListener {
             if(adapterPosition != RecyclerView.NO_POSITION)
                 onHospitalizacijaClicked.invoke(adapterPosition)
-        })
+        }
     }
 
     fun bind(pacijent: Pacijent){
