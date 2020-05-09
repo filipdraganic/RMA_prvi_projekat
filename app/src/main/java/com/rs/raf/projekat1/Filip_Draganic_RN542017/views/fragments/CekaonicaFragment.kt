@@ -13,6 +13,8 @@ import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.recycler.adapter.Cekao
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.recycler.diff.PacijentDiff
 import com.rsrafprojekat1.Filip_Draganic_RN542017.R
 import kotlinx.android.synthetic.main.fragment_cekaonica.*
+import kotlinx.android.synthetic.main.fragment_cekaonica.searchET
+import timber.log.Timber
 
 class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica){
     private val sharedViewModel : SharedViewModel by activityViewModels()
@@ -64,11 +66,19 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica){
 
     override fun onPause() {
         super.onPause()
-        sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, "")
+        sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
+        Timber.e("OnPause iz Cekaonica fragment")
+        cekaonicaAdapter.notifyDataSetChanged()
+
+
     }
 
     override fun onResume() {
         super.onResume()
         sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
+        Timber.e("OnResume iz Cekaonica fragment")
+        cekaonicaAdapter.notifyDataSetChanged()
+
+
     }
 }

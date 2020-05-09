@@ -6,12 +6,13 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.viewmodel.SharedViewModel
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.recycler.adapter.OtpustenAdapter
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.recycler.diff.PacijentDiff
 import com.rsrafprojekat1.Filip_Draganic_RN542017.R
 import kotlinx.android.synthetic.main.fragment_otpusteni.*
+import timber.log.Timber
 
 class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni){
 
@@ -40,7 +41,7 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni){
 
 
     private fun initRecycler(){
-        rvOtpusteni.layoutManager = LinearLayoutManager(activity)
+        rvOtpusteni.layoutManager = GridLayoutManager(activity, 2)
         otpustenAdapter = OtpustenAdapter(PacijentDiff())
         rvOtpusteni.adapter = otpustenAdapter
     }
@@ -53,11 +54,20 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni){
 
     override fun onPause() {
         super.onPause()
-        sharedViewModel.pretraziPacijenta(SharedViewModel.OTPUSTEN, "")
+        sharedViewModel.pretraziPacijenta(SharedViewModel.OTPUSTEN, searchET.text.toString())
+        Timber.e("OnPause iz Otpusten fragment")
+        otpustenAdapter.notifyDataSetChanged()
+
+
     }
 
     override fun onResume() {
         super.onResume()
         sharedViewModel.pretraziPacijenta(SharedViewModel.OTPUSTEN, searchET.text.toString())
+        Timber.e("OnResume iz Otpusten fragment")
+        otpustenAdapter.notifyDataSetChanged()
+
+
+
     }
 }

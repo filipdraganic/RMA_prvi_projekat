@@ -2,7 +2,6 @@ package com.rs.raf.projekat1.Filip_Draganic_RN542017.views.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,10 +12,7 @@ import com.rs.raf.projekat1.Filip_Draganic_RN542017.viewmodel.SharedViewModel
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.recycler.adapter.HospitalizacijaAdapter
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.recycler.diff.PacijentDiff
 import com.rsrafprojekat1.Filip_Draganic_RN542017.R
-import kotlinx.android.synthetic.main.fragment_cekaonica.*
-import kotlinx.android.synthetic.main.fragment_cekaonica.searchET
 import kotlinx.android.synthetic.main.fragment_hospitalizovani.*
-import kotlinx.android.synthetic.main.hospitalizacija_lista.*
 import timber.log.Timber
 
 class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani){
@@ -74,11 +70,16 @@ class HospitalizovaniFragment : Fragment(R.layout.fragment_hospitalizovani){
 
     override fun onPause() {
         super.onPause()
-        sharedViewModel.pretraziPacijenta(SharedViewModel.HOSPITALIZOVAN, "")
+        sharedViewModel.pretraziPacijenta(SharedViewModel.HOSPITALIZOVAN, searchET.text.toString())
+        Timber.e("OnPause iz Hospitalizovan fragment")
+
+
     }
 
     override fun onResume() {
         super.onResume()
         sharedViewModel.pretraziPacijenta(SharedViewModel.HOSPITALIZOVAN, searchET.text.toString())
+        Timber.e("OnResume iz Hospitalizovan fragment")
+
     }
 }

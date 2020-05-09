@@ -96,12 +96,14 @@ class SharedViewModel : ViewModel(){
             CEKAONICA->{
                 when(uStanje){
                     HOSPITALIZOVAN -> {
+                        //Iz cekaonice u Hospitalizovano stanje. Hospitalizacija dugme
                         cekaonicaLista.remove(pacijent)
                         hospitalizovaniLista.add(pacijent)
                         cekaonicaData.value = cekaonicaLista
                         hospitalizovaniData.value = hospitalizovaniLista
                     }
                     OTPUSTEN ->{
+                        //Iz cekaonice u otpustenu listu. Zdrav dugme
                         cekaonicaLista.remove(pacijent)
                         otpusteniLista.add(pacijent)
                         cekaonicaData.value = cekaonicaLista
@@ -113,9 +115,11 @@ class SharedViewModel : ViewModel(){
                 }
             }
             HOSPITALIZOVAN -> {
+                //Iz Hospitalizovanog stanja u otpusteno stanje Otpusteno dugme
                 hospitalizovaniLista.remove(pacijent)
                 otpusteniLista.add(pacijent)
                 otpusteniData.value = otpusteniLista
+                hospitalizovaniData.value = hospitalizovaniLista
             }
             else -> {
                 Timber.e("Greska u Shared View Model 2")
@@ -135,21 +139,24 @@ class SharedViewModel : ViewModel(){
 
         when(lista){
             CEKAONICA -> {
-                if (string == "") {
-                    cekaonicaData.value = cekaonicaLista
-                }
+
                 cekaonicaLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
                 cekaonicaData.value = tempLista
+                if (string == "") cekaonicaData.value = cekaonicaLista
+
+
             }
             HOSPITALIZOVAN -> {
-                if (string == "") hospitalizovaniData.value = hospitalizovaniLista
                 hospitalizovaniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
                 hospitalizovaniData.value = tempLista
+                if (string == "") hospitalizovaniData.value = hospitalizovaniLista
+
             }
             else -> {
-                if (string == "") otpusteniData.value = otpusteniLista
                 otpusteniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
                 otpusteniData.value = tempLista
+                if (string == "") otpusteniData.value = otpusteniLista
+
             }
         }
 
