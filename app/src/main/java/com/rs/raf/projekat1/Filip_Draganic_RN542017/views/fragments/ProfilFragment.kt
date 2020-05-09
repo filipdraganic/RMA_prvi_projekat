@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.activity.LoginActivity
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.activity.MainActivity
@@ -36,6 +37,7 @@ class ProfilFragment : Fragment(R.layout.fragment_profil){
     private fun initListeners( ){
 
         izmeniBtn.setOnClickListener {
+
             izmeniBtn.visibility = View.GONE
             odjavaBtn.visibility = View.GONE
 
@@ -58,35 +60,40 @@ class ProfilFragment : Fragment(R.layout.fragment_profil){
         }
 
         saveBtn.setOnClickListener {
-            val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
-            val editor = sharedPreferences?.edit()
-            if (editor != null) {
-                editor.putString("ime", imeET.text.toString())
-                editor.putString("prezime", prezimeET.text.toString())
-                editor.putString("bolnica", bolnicaET.text.toString())
-
-
-                editor.apply()
+            if(imeET.text.toString().length < 3 || prezimeET.text.toString().length < 3 || bolnicaET.text.toString().length < 3){
+                Toast.makeText(activity, "Sva polja moraju biti popunjena sa minimum 3 karaktera", Toast.LENGTH_SHORT).show()
             }
+            else {
+                val sharedPreferences =
+                    activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
+                val editor = sharedPreferences?.edit()
+                if (editor != null) {
+                    editor.putString("ime", imeET.text.toString())
+                    editor.putString("prezime", prezimeET.text.toString())
+                    editor.putString("bolnica", bolnicaET.text.toString())
 
-            imeTV.text = imeET.text.toString()
-            prezimeTV.text = prezimeET.text.toString()
-            bolnicaTV.text = bolnicaET.text.toString()
 
-            izmeniBtn.visibility = View.VISIBLE
-            odjavaBtn.visibility = View.VISIBLE
+                    editor.apply()
+                }
 
-            saveBtn.visibility = View.GONE
-            odustaniBtn.visibility = View.GONE
+                imeTV.text = imeET.text.toString()
+                prezimeTV.text = prezimeET.text.toString()
+                bolnicaTV.text = bolnicaET.text.toString()
 
-            imeTV.visibility = View.VISIBLE
-            prezimeTV.visibility = View.VISIBLE
-            bolnicaTV.visibility = View.VISIBLE
+                izmeniBtn.visibility = View.VISIBLE
+                odjavaBtn.visibility = View.VISIBLE
 
-            imeET.visibility = View.GONE
-            prezimeET.visibility = View.GONE
-            bolnicaET.visibility = View.GONE
+                saveBtn.visibility = View.GONE
+                odustaniBtn.visibility = View.GONE
 
+                imeTV.visibility = View.VISIBLE
+                prezimeTV.visibility = View.VISIBLE
+                bolnicaTV.visibility = View.VISIBLE
+
+                imeET.visibility = View.GONE
+                prezimeET.visibility = View.GONE
+                bolnicaET.visibility = View.GONE
+            }
 
         }
 
@@ -104,6 +111,7 @@ class ProfilFragment : Fragment(R.layout.fragment_profil){
             imeET.visibility = View.GONE
             prezimeET.visibility = View.GONE
             bolnicaET.visibility = View.GONE
+
         }
 
         odjavaBtn.setOnClickListener {
