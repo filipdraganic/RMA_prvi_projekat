@@ -49,14 +49,13 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni){
     private fun initObservers(){
         sharedViewModel.getOtpusteniData().observe(viewLifecycleOwner, Observer {
             otpustenAdapter.submitList(it)
+            otpustenAdapter.notifyDataSetChanged()
         })
     }
 
     override fun onPause() {
         super.onPause()
-        sharedViewModel.pretraziPacijenta(SharedViewModel.OTPUSTEN, searchET.text.toString())
-        Timber.e("OnPause iz Otpusten fragment")
-        otpustenAdapter.notifyDataSetChanged()
+
 
 
     }
@@ -64,8 +63,7 @@ class OtpusteniFragment : Fragment(R.layout.fragment_otpusteni){
     override fun onResume() {
         super.onResume()
         sharedViewModel.pretraziPacijenta(SharedViewModel.OTPUSTEN, searchET.text.toString())
-        Timber.e("OnResume iz Otpusten fragment")
-        otpustenAdapter.notifyDataSetChanged()
+
 
 
 

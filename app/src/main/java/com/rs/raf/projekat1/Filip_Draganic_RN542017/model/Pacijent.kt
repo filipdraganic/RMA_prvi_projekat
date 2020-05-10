@@ -7,12 +7,12 @@ import java.util.*
 @Parcelize
 data class Pacijent(
     val id:UUID,
-    val ime: String,
-    val prezime: String,
+    var ime: String,
+    var prezime: String,
     val datumPrijema: Date,
-    val simptomi: String,
+    var simptomi: String,
     val originalniSimptomi: String,
-    val datumHospitalizacije:Date?,
-    val datumOtpustanja:Date?
+    var datumHospitalizacije:Date?,
+    var datumOtpustanja:Date?
 
 ) : Parcelable

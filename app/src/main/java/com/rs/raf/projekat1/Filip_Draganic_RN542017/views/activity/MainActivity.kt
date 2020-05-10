@@ -3,10 +3,13 @@ package com.rs.raf.projekat1.Filip_Draganic_RN542017.views.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.fragments.ProfilFragment
 import com.rs.raf.projekat1.Filip_Draganic_RN542017.views.viewpager.BottomPagerAdapter
 import com.rsrafprojekat1.Filip_Draganic_RN542017.R
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         noscrollBottomNavigation.adapter = BottomPagerAdapter(supportFragmentManager)
 
 
+
+    }
+
+    override fun onBackPressed(){
+        super.onBackPressed()
+        Timber.e("Nazad")
 
     }
 

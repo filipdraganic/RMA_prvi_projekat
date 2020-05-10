@@ -23,7 +23,9 @@ class SharedViewModel : ViewModel(){
     private val hospitalizovaniData : MutableLiveData<List<Pacijent>> = MutableLiveData()
     private val otpusteniData : MutableLiveData<List<Pacijent>> = MutableLiveData()
 
-    private val toShowData : MutableLiveData<List<Pacijent>> = MutableLiveData()
+    private val cekaonicaStanje : MutableLiveData<List<Pacijent>> = MutableLiveData()
+    private val hospitalizovaniStanje : MutableLiveData<List<Pacijent>> = MutableLiveData()
+    private val otpusteniStanje : MutableLiveData<List<Pacijent>> = MutableLiveData()
 
 
     fun getCekaonicaData() : MutableLiveData<List<Pacijent>> {
@@ -37,7 +39,18 @@ class SharedViewModel : ViewModel(){
     }
 
 
-    fun testPacijenti(){
+    fun getCekaonicaStanje() : MutableLiveData<List<Pacijent>> {
+        return cekaonicaStanje
+    }
+    fun getHospitalizovaniStanje() : MutableLiveData<List<Pacijent>> {
+        return hospitalizovaniStanje
+    }
+    fun getOtpusteniStanje() : MutableLiveData<List<Pacijent>> {
+        return otpusteniStanje
+    }
+
+
+    fun testPacijenti() {
         val imena = listOf<String>("Finn", "Colton", "Macey", "Ori", "Slade", "Noelle", "Erich")
         val prezimena = listOf<String>("Martinez", "Curtis", "Ruiz", "Calderon","Rollins", "Cameron", "Espinoza", "Dyer")
         val simptomi = listOf<String>("Abdominal Pain of Absolutely No Significance -  as in why come to the ER type of pain. ",
@@ -74,20 +87,31 @@ class SharedViewModel : ViewModel(){
             CEKAONICA -> {
                 cekaonicaLista.add(pacijent)
                 cekaonicaData.value = cekaonicaLista
+                cekaonicaStanje.value = cekaonicaLista
             }
             HOSPITALIZOVAN ->{
                 hospitalizovaniLista.add(pacijent)
                 hospitalizovaniData.value = hospitalizovaniLista
+                hospitalizovaniStanje.value = hospitalizovaniLista
             }
             else ->{
                 otpusteniLista.add(pacijent)
                 otpusteniData.value = otpusteniLista
+                otpusteniStanje.value = otpusteniLista
             }
         }
 
 
     }
 
+    fun overwritePacijenta(pacijent: Pacijent){
+        for(x in hospitalizovaniLista){
+            if (x.id == pacijent.id){
+                val index = hospitalizovaniLista.indexOf(x)
+                hospitalizovaniLista[index] = pacijent
+            }
+        }
+    }
 
 
     fun premestiPacijenta(pacijent: Pacijent, stanje: Int, uStanje: Int){
@@ -98,16 +122,24 @@ class SharedViewModel : ViewModel(){
                     HOSPITALIZOVAN -> {
                         //Iz cekaonice u Hospitalizovano stanje. Hospitalizacija dugme
                         cekaonicaLista.remove(pacijent)
+                        pacijent.datumHospitalizacije = Date()
                         hospitalizovaniLista.add(pacijent)
+
                         cekaonicaData.value = cekaonicaLista
+                        cekaonicaStanje.value = cekaonicaLista
                         hospitalizovaniData.value = hospitalizovaniLista
+                        hospitalizovaniStanje.value = hospitalizovaniLista
                     }
                     OTPUSTEN ->{
                         //Iz cekaonice u otpustenu listu. Zdrav dugme
                         cekaonicaLista.remove(pacijent)
+                        pacijent.datumOtpustanja = Date()
                         otpusteniLista.add(pacijent)
                         cekaonicaData.value = cekaonicaLista
+                        cekaonicaStanje.value = cekaonicaLista
                         otpusteniData.value = otpusteniLista
+                        otpusteniStanje.value = otpusteniLista
+
                     }
                     else -> {
                         Timber.e("Greska u Shared View Model 1")
@@ -117,9 +149,12 @@ class SharedViewModel : ViewModel(){
             HOSPITALIZOVAN -> {
                 //Iz Hospitalizovanog stanja u otpusteno stanje Otpusteno dugme
                 hospitalizovaniLista.remove(pacijent)
+                pacijent.datumOtpustanja = Date()
                 otpusteniLista.add(pacijent)
                 otpusteniData.value = otpusteniLista
+                otpusteniStanje.value = otpusteniLista
                 hospitalizovaniData.value = hospitalizovaniLista
+                hospitalizovaniStanje.value = hospitalizovaniLista
             }
             else -> {
                 Timber.e("Greska u Shared View Model 2")
@@ -140,22 +175,22 @@ class SharedViewModel : ViewModel(){
         when(lista){
             CEKAONICA -> {
 
-                cekaonicaLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+                cekaonicaLista.forEach {if (it.ime.toLowerCase().contains(string.toLowerCase()) || it.prezime.toLowerCase().contains(string.toLowerCase())) tempLista.add(it) }
                 cekaonicaData.value = tempLista
-                if (string == "") cekaonicaData.value = cekaonicaLista
+                //if (string == "") cekaonicaData.value = cekaonicaLista
 
 
             }
             HOSPITALIZOVAN -> {
-                hospitalizovaniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+                hospitalizovaniLista.forEach {if (it.ime.toLowerCase().contains(string.toLowerCase()) || it.prezime.toLowerCase().contains(string.toLowerCase())) tempLista.add(it) }
                 hospitalizovaniData.value = tempLista
-                if (string == "") hospitalizovaniData.value = hospitalizovaniLista
+                //if (string == "") hospitalizovaniData.value = hospitalizovaniLista
 
             }
             else -> {
-                otpusteniLista.forEach {if (it.ime.contains(string) || it.prezime.contains(string)) tempLista.add(it) }
+                otpusteniLista.forEach {if (it.ime.toLowerCase().contains(string.toLowerCase()) || it.prezime.toLowerCase().contains(string.toLowerCase())) tempLista.add(it) }
                 otpusteniData.value = tempLista
-                if (string == "") otpusteniData.value = otpusteniLista
+               // if (string == "") otpusteniData.value = otpusteniLista
 
             }
         }

@@ -61,14 +61,15 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica){
     private fun initObservers(){
         sharedViewModel.getCekaonicaData().observe(viewLifecycleOwner, Observer{
             cekaonicaAdapter.submitList(it)
+            cekaonicaAdapter.notifyDataSetChanged()
+
         })
     }
 
     override fun onPause() {
         super.onPause()
-        sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
-        Timber.e("OnPause iz Cekaonica fragment")
-        cekaonicaAdapter.notifyDataSetChanged()
+
+
 
 
     }
@@ -76,8 +77,7 @@ class CekaonicaFragment : Fragment(R.layout.fragment_cekaonica){
     override fun onResume() {
         super.onResume()
         sharedViewModel.pretraziPacijenta(SharedViewModel.CEKAONICA, searchET.text.toString())
-        Timber.e("OnResume iz Cekaonica fragment")
-        cekaonicaAdapter.notifyDataSetChanged()
+
 
 
     }

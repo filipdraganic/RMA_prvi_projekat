@@ -14,9 +14,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/okvirzacekaonicu"
-        android:hint="Pretrazite po imenu ili prezimenu"
+        android:hint="@string/search_hint"
         android:drawableLeft="@drawable/ic_search_black_24dp"
         android:padding="10dp"
+        android:maxLines="1"
 
         />
     

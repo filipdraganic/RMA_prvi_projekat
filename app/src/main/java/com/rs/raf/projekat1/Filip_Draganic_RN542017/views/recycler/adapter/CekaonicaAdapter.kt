@@ -35,6 +35,7 @@ class CekaonicaAdapter (pacijentDiff: PacijentDiff, private val onZdravClicked: 
     override fun onBindViewHolder(holder: CekaonicaViewHolder, position: Int) {
         val pacijent = getItem(position)
         holder.bind(pacijent)
+
     }
 
 

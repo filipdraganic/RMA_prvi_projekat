@@ -1,93 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-
-    android:paddingTop="40dp"
-    android:paddingBottom="80dp"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-
-    android:gravity="center_horizontal"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Unos novog pacijenta"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"
-        />
-
-    <ImageView
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:src="@drawable/ic_person_add_green_24dp"
-        />
-
-    <EditText
-        android:id="@+id/imeET"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="60dp"
-        android:hint="Unesite ime"
 
-        />
+        android:orientation="vertical"
 
-    <EditText
-        android:id="@+id/prezimeET"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:hint="Unesite prezime"
+        android:paddingTop="40dp"
+        android:paddingBottom="80dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
 
-        />
 
-    <EditText
-        android:id="@+id/simptomiET"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:hint="Unesite simptome i opste stanje pacijenta"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent">
 
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
-
-        <Button
-            android:id="@+id/testDugme"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:layout_constraintBottom_toTopOf="@id/dodajBtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Test"
+            android:text="@string/unos_novog_pacijenta"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            />
 
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:src="@drawable/ic_person_add_green_24dp"
+            />
+
+        <EditText
+            android:id="@+id/imeET"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="60dp"
+            android:hint="@string/unesite_ime"
+            android:maxLines="1"
 
             />
 
-
-
-        <Button
-            android:id="@+id/dodajBtn"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Dodaj u cekaonicu"
-            android:textColor="@color/white"
-            android:background="@color/grey"
+        <EditText
+            android:id="@+id/prezimeET"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/unesite_prezime"
+            android:maxLines="1"
 
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/simptomiET"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/unesite_simptome_i_opste_stanje"
+            android:maxLines="1"
+
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            >
+
+            <Button
+                android:id="@+id/testDugme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintBottom_toTopOf="@id/dodajBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/test"
 
 
-</LinearLayout>
+                />
+
+
+
+            <Button
+                android:id="@+id/dodajBtn"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/dodaj_u_cekaonicu"
+                android:textColor="@color/white"
+                android:background="@color/grey"
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

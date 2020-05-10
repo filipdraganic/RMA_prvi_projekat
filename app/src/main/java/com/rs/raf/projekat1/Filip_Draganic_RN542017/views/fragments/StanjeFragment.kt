@@ -21,26 +21,23 @@ class StanjeFragment : Fragment(R.layout.fragment_stanje){
 
     private fun init(){
         initObservers()
-        initListeners()
     }
 
     private fun initObservers(){
 
-        sharedViewModel.getCekaonicaData().observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getCekaonicaStanje().observe(viewLifecycleOwner, Observer {
             cekaonicaBroj.text = it.size.toString()
         })
 
-        sharedViewModel.getHospitalizovaniData().observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getHospitalizovaniStanje().observe(viewLifecycleOwner, Observer {
             hospitalizovaniBroj.text = it.size.toString()
         })
 
 
-        sharedViewModel.getOtpusteniData().observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getOtpusteniStanje().observe(viewLifecycleOwner, Observer {
             otpusteniBroj.text = it.size.toString()
         })
     }
 
-    private fun initListeners(){
 
-    }
 }

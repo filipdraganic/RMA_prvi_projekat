@@ -1,172 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
+    android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingBottom="80dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:windowSoftInputMode="adjustResize"
+
     android:layout_marginBottom="90dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
 
-        android:paddingTop="40dp"
-        android:paddingBottom="80dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center_horizontal"
+        android:text="@string/podaci_o_zdravstvenom_radniku"
+        android:textSize="18sp" />
 
+    <ImageView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_healing_green_24dp"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Podaci o zdravstvenom radniku"
-            android:textSize="18sp" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/ime"
+        />
+    <TextView
+        android:id="@+id/imeTV"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        />
+    <EditText
+        android:id="@+id/imeET"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:maxLines="1"
 
-        <ImageView
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:src="@drawable/ic_healing_green_24dp"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="@string/prezime"
+        />
+    <TextView
+        android:id="@+id/prezimeTV"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        />
+
+    <EditText
+        android:id="@+id/prezimeET"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:maxLines="1"
+
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="@string/bolnica"
+        />
+    <TextView
+        android:id="@+id/bolnicaTV"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        />
+    <EditText
+        android:id="@+id/bolnicaET"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:maxLines="1"
+
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <Button
+            android:id="@+id/izmeniBtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="@string/izmeni"
+            android:background="@color/grey"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp"
             />
 
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="Ime:"
+
+        <Button
+            android:id="@+id/odjavaBtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="@string/odjava"
+            android:background="@color/grey"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="20dp"
             />
-        <TextView
-            android:id="@+id/imeTV"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="imePlaceholder"
-            />
-        <EditText
-            android:id="@+id/imeET"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+
+        <Button
+            android:id="@+id/odustaniBtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="@string/odustani"
             android:visibility="gone"
+            android:background="@color/grey"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp"
             />
 
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="Prezime:"
-            />
-        <TextView
-            android:id="@+id/prezimeTV"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="prezimePlaceholder"
-            />
-
-        <EditText
-            android:id="@+id/prezimeET"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="@string/izmeni"
             android:visibility="gone"
+            android:background="@color/grey"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="20dp"
             />
-
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="Bolnica:"
-            />
-        <TextView
-            android:id="@+id/bolnicaTV"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="bolnicaPlaceholder"
-            />
-        <EditText
-            android:id="@+id/bolnicaET"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:visibility="gone"
-            />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="80dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            >
-            <Button
-                android:id="@+id/izmeniBtn"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="Izmeni"
-                android:background="@color/grey"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="20dp"
-                />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <Button
-                android:id="@+id/odjavaBtn"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="Odjava"
-                android:background="@color/grey"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginRight="20dp"
-                />
+</LinearLayout>
 
-            <Button
-                android:id="@+id/odustaniBtn"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="Odustani"
-                android:visibility="gone"
-                android:background="@color/grey"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="20dp"
-                />
-
-            <Button
-                android:id="@+id/saveBtn"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="Izmeni"
-                android:visibility="gone"
-                android:background="@color/grey"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginRight="20dp"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </LinearLayout>
-
-
-</ScrollView>
